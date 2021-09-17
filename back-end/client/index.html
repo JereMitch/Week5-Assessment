@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Back End Assessment</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <audio id="surprise" src="Surprise.mp3"></audio>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body class="container">
+    <div class="div">
+      <button class="button" id="complimentButton">Get a Compliment</button>
+      <button class="button" id="fortuneButton">Get a Fortune</button>
+      <a id="surpriseTag" href="Surprise.mp3" onclick="sound(event, this)">
+        <button class="button" id="surpriseButton">Click for Surprise</button>
+      </a>
+        <a href="https://www.youtube.com/watch?v=hlWiI4xVXKY" target="_blank">
+          <button class="button" id="calmButton">Calm Music</buttom>
+        </a>
+        <button class="button" id="motivateButton">Need Motivation?</button>
+    </div>
+    <script>
+      document.getElementById("fortuneButton").onclick = function () {
+        axios.get("http://localhost:4000/api/fortune/").then(function (res) {
+          const fort = res.data;
+          alert(fort);
+        });
+      };
+    </script>
+      <script>
+        document.getElementById("motivateButton").onclick = function () {
+        axios
+          .get("http://localhost:4000/api/motivate/")
+          .then(function (r) {
+            const mot = r.data;
+            alert(mot)
+          });
+      };
+      </script>
+    <script>
+      document.getElementById("complimentButton").onclick = function () {
+        axios
+          .get("http://localhost:4000/api/compliment/")
+          .then(function (response) {
+            const data = response.data;
+            alert(data);
+          });
+      };
+    </script>
+    <aside id="message"></aside>
+    <script src="main.js"></script>
+  </body>
+</html>

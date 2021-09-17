@@ -1,0 +1,12 @@
+body {
+  text-align: center;
+}
+
+.button {
+  height: 35px;
+  background-color: aliceblue;
+  border-radius: 10px;
+  position: flex;
+  border: solid;
+  align-content: space-between;
+}
