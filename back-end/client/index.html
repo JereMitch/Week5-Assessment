@@ -18,6 +18,9 @@
         </a>
         <button class="button" id="motivateButton">Need Motivation?</button>
     </div>
+    <div id="speaker-container">
+
+    </div>
     <script>
       document.getElementById("fortuneButton").onclick = function () {
         axios.get("http://localhost:4000/api/fortune/").then(function (res) {
@@ -31,8 +34,14 @@
         axios
           .get("http://localhost:4000/api/motivate/")
           .then(function (r) {
-            const mot = r.data;
-            alert(mot)
+            const {name, url} = r.data
+            let link = document.createElement('a')
+            link.href = url
+            link.textContent = name
+            link.target = '_blank'
+            let container = document.getElementById('speaker-container')
+            container.innerHTML = ''
+            container.append(link)
           });
       };
       </script>

@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 
-
 const app = express();
 
 app.use(cors());
@@ -21,8 +20,6 @@ app.get("/api/compliment", (req, res) => {
 
   res.status(200).send(randomCompliment);
 });
-
-app.listen(4000, () => console.log("Server running on 4000"));
 
 app.get("/api/fortune", (req, res) => {
   const fortunes = [
@@ -48,19 +45,21 @@ app.get("/api/sound", (req, res) => {
 
 app.get("/api/motivate/", (req, res) => {
   const speakers = [
-    "Eric Thomas",
-    "Tony Robbins",
-    "Les Brown",
-    "Jim Rohn",
-    "Arnold Schwarzenegger",
-    "Zig Ziglar",
-    "Dr. Wayne Dyer",
-    "Robin Sharma",
-    "Brian Tracy",
-    "Nick Vujicic",
+    { name: "Eric Thomas", url: "https://www.etinspires.com/home" },
+    { name: "Tony Robbins", url: "https://www.tonyrobbins.com/" },
+    { name: "Les Brown", url: "https://lesbrown.com/" },
+    { name: "Jim Rohn", url: "https://www.jimrohn.com/" },
+    { name: "Arnold Schwarzenegger", url: "http://www.schwarzenegger.com/" },
+    { name: "Zig Ziglar", url: "https://www.ziglar.com/" },
+    { name: "Dr. Wayne Dyer", url: "https://www.drwaynedyer.com/" },
+    { name: "Robin Sharma", url: "https://www.robinsharma.com/" },
+    { name: "Brian Tracy", url: "https://www.briantracy.com/" },
+    { name: "Nick Vujicic", url: "https://nickvujicic.com/" },
   ];
   let randomInd = Math.floor(Math.random() * speakers.length);
   let randomSpeaker = speakers[randomInd];
 
   res.status(200).send(randomSpeaker);
 });
+
+app.listen(4000, () => console.log("Server running on 4000"));
